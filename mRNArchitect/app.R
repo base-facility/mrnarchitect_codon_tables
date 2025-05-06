@@ -262,7 +262,20 @@ server <- function(input, output, session) {
     }
   })
   
-  
+  # Generate a python dict for input codon table
+  codon_table_pydict <- function(species) {
+    codon_table <- read.table("data/ref_codon_usage.txt", header = TRUE, stringsAsFactors = FALSE)
+
+    codon_dict_list <- codon_table %>%
+    dplyr::select(codon, amino_acid, !!rlang::sym(species)) %>%
+    dplyr::rename(aa = amino_acid, val = !!rlang::sym(species)) %>%
+    dplyr::group_by(aa) %>%
+    dplyr::summarise(codons = list(as.list(setNames(val, codon))), .groups = "drop") %>%
+    tibble::deframe()
+
+    return(reticulate::r_to_py(codon_dict_list))
+    }
+
   optimizeSequence <- function(sequence, species, gc_min, gc_max, gc_window, stem_size, hairpin_window, kmers_value, poly_T, poly_A, poly_C, poly_G, uridineDepletion, ribosomeSlip) {
     
     optimized_records <- list()
@@ -315,7 +328,8 @@ server <- function(input, output, session) {
       constraints = constraints,
       objectives = list(
         CodonOptimize(
-          species = species,
+          species = "codon_usage_table",
+          codon_usage_table = codon_table_pydict(species),
           method = "use_best_codon"),
         UniquifyAllKmers(as.integer(kmers_value)) 
       )
