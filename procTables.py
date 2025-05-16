@@ -7,8 +7,11 @@ codon_tb = pd.read_csv("/Users/la.uqmzardb/projects/misc/hgunter_codon_table/mRN
 # DEBUG
 print(codon_tb.head())
 
-xls = pd.read_excel("new_codon_models.xlsx", sheet_name=None)
+xls = pd.read_excel("/Users/la.uqmzardb/projects/misc/hgunter_codon_table/new_codon_models_v2.xlsx", sheet_name=None)
+print(xls)
 for name, table in xls.items():
+    print(table.head())
+    print(name)
     _df = table[["codon", "frequency"]].rename(columns={"frequency": name})
     codon_tb = codon_tb.merge(_df, "left", "codon")
     # DEBUG

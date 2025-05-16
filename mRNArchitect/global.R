@@ -55,8 +55,8 @@ UniquifyAllKmers <- dnachisel$UniquifyAllKmers
 Location <- dnachisel$Location
 
 organism_index_df <- data.frame(
-  Organism = c("Human", "Mouse", "Low CAI Same GC", "Low GC same CAI", "Low GC conservative"),
-  Species = c("h_sapiens", "m_musculus", "low_cai_same_gc", "low_gc_same_cai", "low_gc_conservative"),
+  Organism = c("Human", "Mouse", "Low GC same CAI conservative", "Low GC same CAI", "Low CAI same GC"),
+  Species = c("h_sapiens", "m_musculus", "low_gc_same_cai_conservative", "low_gc_same_cai", "low_cai_same_gc"),
   stringsAsFactors = FALSE
 )
 
