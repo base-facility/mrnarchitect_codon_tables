@@ -54,9 +54,10 @@ EnforceTranslation <- dnachisel$EnforceTranslation
 UniquifyAllKmers <- dnachisel$UniquifyAllKmers
 Location <- dnachisel$Location
 
+# CHANGE BELOW FOR ADDING MORE TABLES #
 organism_index_df <- data.frame(
-  Organism = c("Human", "Mouse", "Low GC same CAI conservative", "Low GC same CAI", "Low CAI same GC"),
-  Species = c("h_sapiens", "m_musculus", "low_gc_same_cai_conservative", "low_gc_same_cai", "low_cai_same_gc"),
+  Organism = c("Human", "Mouse", "CAI Low 2 same GC", "CAI Low 3 same GC", "CAI low 4 same GC", "CAI low 5 same GC"),
+  Species = c("h_sapiens", "m_musculus", "cai_low_2_same_gc", "cai_low_3_same_gc", "cai_low_4_same_gc", "cai_low_5_same_gc"),
   stringsAsFactors = FALSE
 )
 

@@ -7,7 +7,7 @@ codon_tb = pd.read_csv("/Users/la.uqmzardb/projects/misc/hgunter_codon_table/mRN
 # DEBUG
 print(codon_tb.head())
 
-xls = pd.read_excel("/Users/la.uqmzardb/projects/misc/hgunter_codon_table/new_codon_models_v2.xlsx", sheet_name=None)
+xls = pd.read_excel("/Users/la.uqmzardb/projects/misc/hgunter_codon_table/new_codon_models_v3.xlsx", sheet_name=None)
 print(xls)
 for name, table in xls.items():
     print(table.head())
